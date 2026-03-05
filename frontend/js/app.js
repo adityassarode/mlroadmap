@@ -13,15 +13,15 @@ function escapeHtml(text) {
 }
 
 function getAuthToken() {
-  return sessionStorage.getItem("admin_token");
+  return localStorage.getItem("admin_token");
 }
 
 function setAuthToken(token) {
-  sessionStorage.setItem("admin_token", token);
+  localStorage.setItem("admin_token", token);
 }
 
 function clearAuthToken() {
-  sessionStorage.removeItem("admin_token");
+  localStorage.removeItem("admin_token");
 }
 
 function isLoggedIn() {
