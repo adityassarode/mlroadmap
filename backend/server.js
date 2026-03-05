@@ -12,7 +12,11 @@ const DATA_FILE = path.join(__dirname, "data", "state.json");
 // ===== Middleware =====
 app.use(
   cors({
-    origin: "https://mlroadmap.netlify.app",
+    origin: [
+      "https://mlroadmaps.netlify.app",
+      "http://localhost:3000",
+      "http://127.0.0.1:5500",
+    ],
     credentials: true,
   }),
 );
