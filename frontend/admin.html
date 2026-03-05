@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Aditya Sarode</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <span class="crest">AS</span>
+        Aditya Sarode
+      </a>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="admin.html" class="active">Admin</a></li>
+        <li><button class="theme-toggle" aria-label="Toggle dark mode">&#x1F319;</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="admin-container">
+
+      <!-- Login Section -->
+      <div id="login-section">
+        <div class="login-card">
+          <h2>&#x1F512; Admin Login</h2>
+          <p>Sign in to manage the roadmap content and highlights.</p>
+          <div id="login-error" class="alert alert-error hidden"></div>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="admin-username">Username</label>
+              <input type="text" id="admin-username" placeholder="Enter username" autocomplete="username" required>
+            </div>
+            <div class="form-group">
+              <label for="admin-password">Password</label>
+              <input type="password" id="admin-password" placeholder="Enter password" autocomplete="current-password" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Sign In</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Editor Section (hidden by default) -->
+      <div id="editor-section" class="hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <h2 style="color: var(--primary); margin: 0;">&#x2699;&#xFE0F; Admin Panel</h2>
+          <button id="btn-logout" class="btn btn-outline">Logout</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="admin-tabs">
+          <button class="admin-tab active" data-tab="tab-editor">&#x1F4DD; Roadmap Editor</button>
+          <button class="admin-tab" data-tab="tab-highlights">&#x1F58D;&#xFE0F; Text Highlights</button>
+        </div>
+
+        <!-- Tab: Roadmap Editor -->
+        <div id="tab-editor" class="tab-content active">
+          <div class="editor-panel">
+            <p class="editor-info">Edit the roadmap using Markdown. Changes sync to all users via the server.</p>
+
+            <div id="save-status" class="alert hidden"></div>
+
+            <div class="editor-toolbar">
+              <button id="btn-save" class="btn btn-success">&#x1F4BE; Save Changes</button>
+              <button id="btn-preview" class="btn btn-accent">&#x1F441;&#xFE0F; Toggle Preview</button>
+              <button id="btn-reset" class="btn btn-danger">&#x1F504; Reset to Original</button>
+            </div>
+
+            <textarea id="roadmap-editor" class="editor-textarea" placeholder="Enter roadmap content in Markdown..."></textarea>
+            <div id="roadmap-preview" class="roadmap-container hidden" style="margin-top: 1rem;"></div>
+          </div>
+        </div>
+
+        <!-- Tab: Highlights -->
+        <div id="tab-highlights" class="tab-content">
+          <div class="highlights-panel">
+            <h2>&#x1F58D;&#xFE0F; Text Highlights</h2>
+            <p class="hl-info">Highlight specific text in the roadmap. The exact text you enter will be highlighted with the chosen color for all users.</p>
+
+            <div id="hl-status" class="alert hidden"></div>
+
+            <div class="highlight-add-form">
+              <div class="form-group">
+                <label for="hl-text-input">Text to highlight</label>
+                <input type="text" id="hl-text-input" placeholder="e.g. Feature Engineering">
+              </div>
+              <div class="form-group" style="flex: 0; min-width: auto;">
+                <label for="hl-color-input">Color</label>
+                <input type="color" id="hl-color-input" value="#fff3cd">
+              </div>
+              <button id="btn-add-highlight" class="btn btn-success" style="align-self: flex-end; white-space: nowrap;">+ Add Highlight</button>
+            </div>
+
+            <ul id="highlights-list" class="highlights-list">
+              <li style="color:var(--text-muted); border:none; padding: 8px 0;">Loading...</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 <span class="footer-name">Aditya Sarode</span>. Built with dedication towards Machine Learning.</p>
+  </footer>
+
+  <script src="js/roadmap-content.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
